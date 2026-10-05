@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+from app.api.routes import router as api_router
 from app.config.settings import get_settings
 
 settings = get_settings()
@@ -9,6 +10,8 @@ app = FastAPI(
     version="0.1.0",
     description="Multilingual voice-first agricultural decision assistant.",
 )
+
+app.include_router(api_router)
 
 
 @app.get("/health")
